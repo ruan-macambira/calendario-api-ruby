@@ -1,7 +1,7 @@
 module CalendarioApi
   class CidadeConsulta
     URL_CIDADES = 'http://www.calendario.com.br/api/cities.json'.freeze
-    
+
     def busca_e_filtra(filtro_estados)
       get = RestClient.get URL_CIDADES
       estados = JSON.parse(get.body)
