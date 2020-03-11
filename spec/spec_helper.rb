@@ -4,8 +4,11 @@ require 'bundler/setup'
 require 'calendario_api'
 require 'webmock/rspec'
 require 'vcr'
+require 'simplecov'
 
 RSpec.configure do |config|
+  SimpleCov.start
+
   VCR.configure do |vcr_config|
     vcr_config.cassette_library_dir = 'spec/vcr_cassettes'
     vcr_config.hook_into :webmock
