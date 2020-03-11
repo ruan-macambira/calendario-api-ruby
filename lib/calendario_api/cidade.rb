@@ -1,3 +1,6 @@
+require 'rest-client'
+require_relative 'cidade_consulta'
+
 module CalendarioApi
   class Cidade
     attr_reader :nome
@@ -14,6 +17,14 @@ module CalendarioApi
       'RS' => 'Rio Grande do Sul', 'RO' => 'Rondônia', 'SC' => 'Santa Catarina',
       'SP' => 'São Paulo', 'SE' => 'Sergipe', 'TO' => 'Tocantins'
     }.freeze
+
+    def self.listar
+      CidadeConsulta.new.busca_e_filtra(nil)
+    end
+
+    def self.filtrar_estado(*siglas_estados)
+      CidadeConsulta.new.busca_e_filtra(siglas_estados)
+    end
 
     def initialize(nome, sigla_estado)
       @nome = nome
