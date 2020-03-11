@@ -1,13 +1,28 @@
 module CalendarioApi
   class Cidade
     attr_reader :nome
+    attr_reader :estado
+    attr_reader :sigla_estado
 
-    def initialize(nome)
+    ESTADO_POR_SIGLA = {
+      'AC' => 'Acre', 'AL' => 'Alagoas', 'AP' => 'Amapá', 'AM' => 'Amazonas',
+      'BA' => 'Bahia', 'CE' => 'Ceará', 'DF' => 'Distrito Federal',
+      'ES' => 'Espírito Santo', 'GO' => 'Goiás', 'MA' => 'Maranhão',
+      'MT' => 'Mato Grosso', 'MS' => 'Mato Grosso do Sul', 'MG' => 'Minas Gerais',
+      'PA' => 'Pará', 'PB' => 'Paraíba', 'PR' => 'Paraná', 'PE' => 'Pernambuco',
+      'PI' => 'Piauí', 'RJ' => 'Rio de Janeiro', 'RN' => 'Rio Grande do Norte',
+      'RS' => 'Rio Grande do Sul', 'RO' => 'Rondônia', 'SC' => 'Santa Catarina',
+      'SP' => 'São Paulo', 'SE' => 'Sergipe', 'TO' => 'Tocantins'
+    }.freeze
+
+    def initialize(nome, sigla_estado)
       @nome = nome
+      @sigla_estado = sigla_estado
+      @estado = ESTADO_POR_SIGLA[sigla_estado]
     end
 
     def to_s
-      @nome
+      "#{@nome}-#{@sigla_estado}"
     end
   end
 end
