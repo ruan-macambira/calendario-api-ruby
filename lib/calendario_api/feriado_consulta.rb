@@ -1,6 +1,6 @@
 module CalendarioApi
   class FeriadoConsulta
-    URL_FERIADOS = 'https://api.calendario.com.br'
+    URL_FERIADOS = 'https://api.calendario.com.br'.freeze
 
     def initialize(token)
       @token = token
@@ -21,7 +21,7 @@ module CalendarioApi
     private
 
     def busca_por_parametros(ano, estado, cidade)
-      consulta_api(ano, estado).map do |feriado|
+      consulta_api(ano, estado, cidade).map do |feriado|
         Feriado.new feriado
       end
     end
