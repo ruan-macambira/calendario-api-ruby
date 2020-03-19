@@ -13,6 +13,8 @@ RSpec.configure do |config|
     vcr_config.cassette_library_dir = 'spec/vcr_cassettes'
     vcr_config.hook_into :webmock
     vcr_config.configure_rspec_metadata!
+
+    vcr_config.filter_sensitive_data('<API_TOKEN>') { ENV['CALENDARIO_API_TOKEN'] }
   end
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'

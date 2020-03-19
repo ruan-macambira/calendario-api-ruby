@@ -6,25 +6,13 @@ module CalendarioApi
       @token = token
     end
 
-    def busca_por_ano(ano)
-      busca_por_parametros(ano, '', '')
-    end
-
-    def busca_por_ano_estado(ano, estado)
-      busca_por_parametros(ano, estado, '')
-    end
-
-    def busca_por_ano_estado_cidade(ano, estado, cidade)
-      busca_por_parametros(ano, estado, cidade)
-    end
-
-    private
-
     def busca_por_parametros(ano, estado, cidade)
       consulta_api(ano, estado, cidade).map do |feriado|
         Feriado.new feriado
       end
     end
+
+    private
 
     def consulta_api(ano, estado = '', cidade = '')
       get = RestClient.get(

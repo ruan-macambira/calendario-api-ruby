@@ -5,16 +5,10 @@ module CalendarioApi
   class Feriado
     attr_reader :nome, :tipo, :codigo_tipo, :data, :link, :descricao
 
-    def self.listar(token, ano)
-      FeriadoConsulta.new(token).busca_por_ano(ano)
-    end
-
-    def self.listar_inclui_estado(token, ano, estado)
-      FeriadoConsulta.new(token).busca_por_ano_estado(ano, estado)
-    end
-
-    def self.listar_inclui_estado_cidade(token, ano, estado, cidade)
-      FeriadoConsulta.new(token).busca_por_ano_estado_cidade(ano, estado, cidade)
+    def self.busca_feriados(params = {})
+      FeriadoConsulta.new(params[:token].to_s).busca_por_parametros(
+        params[:ano].to_s, params[:estado].to_s, params[:cidade].to_s
+      )
     end
 
     def initialize(params = {})
