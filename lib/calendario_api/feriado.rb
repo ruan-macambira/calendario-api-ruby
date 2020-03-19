@@ -13,5 +13,9 @@ module CalendarioApi
       @link = params['link']
       @descricao = params['description']
     end
+
+    def <=>(other)
+      return self.date <=> other.date
+    end
   end
 end

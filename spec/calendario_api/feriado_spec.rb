@@ -6,7 +6,7 @@ RSpec.describe CalendarioApi::Feriado do
   subject(:feriados_2020) { CalendarioApi.busca_feriados token: token, ano: 2020 }
 
   context 'Métodos de Instância' do
-    subject(:feriado) { build :feriado }
+    subject(:feriado) { build :feriado, :ano_novo }
 
     it '#nome' do
       expect(feriado.link).to be_a String

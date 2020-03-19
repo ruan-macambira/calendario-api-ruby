@@ -7,9 +7,11 @@ module CalendarioApi
     end
 
     def busca_por_parametros(ano, estado, cidade)
-      consulta_api(ano, estado, cidade).map do |feriado|
-        Feriado.new feriado
-      end
+      FeriadoResposta.new(
+        consulta_api(ano, estado, cidade).map do |feriado|
+          Feriado.new feriado
+        end
+      )
     end
 
     private

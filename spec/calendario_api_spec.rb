@@ -1,32 +1,32 @@
 RSpec.describe CalendarioApi do
   let(:token) { ENV['CALENDARIO_API_TOKEN'] }
-  context '.busca_feriados' do
-    it 'retorna feriados nacionais do ano', vcr: 'feriados/brasil_2020' do
-      listagem = CalendarioApi.busca_feriados token: token, ano: 2020
+  context 'Token Válido' do
+    context '.busca_feriados' do
+      it 'retorna feriados nacionais do ano', vcr: 'feriados/brasil_2020' do
+        listagem = CalendarioApi.busca_feriados token: token, ano: 2020
 
-      expect(listagem.count).to be > 0
-      expect(listagem.map(&:tipo).uniq).to include('Feriado Nacional')
-    end
+        expect(listagem.map(&:tipo).uniq).to include('Feriado Nacional')
+      end
 
-    it 'retorna os feriados nacionais e estaduais', vcr: 'feriados/brasil_sp_2020' do
-      listagem = CalendarioApi.busca_feriados token: token, ano: 2020, estado: 'SP'
+      it 'retorna os feriados nacionais e estaduais', vcr: 'feriados/brasil_sp_2020' do
+        listagem = CalendarioApi.busca_feriados token: token, ano: 2020, estado: 'SP'
 
-      expect(listagem.count).to be > 0
-      expect(listagem.map(&:tipo).uniq).to include('Feriado Nacional', 'Feriado Estadual')
-      expect(listagem.map(&:tipo).uniq).to_not include('Feriado Municipal')
-    end
+        expect(listagem.map(&:tipo).uniq).to include('Feriado Nacional', 'Feriado Estadual')
+        expect(listagem.map(&:tipo).uniq).to_not include('Feriado Municipal')
+      end
 
-    it 'retorna os feriados nacionais e municipais', vcr: 'feriados/brasil_sao_paulo_2020' do
-      listagem = CalendarioApi.busca_feriados token: token, ano: 2020, cidade: 'SAO_PAULO'
-      expect(listagem.map(&:tipo).uniq).to include('Feriado Nacional', 'Feriado Municipal')
-      expect(listagem.map(&:tipo).uniq).to_not include('Feriado Estadual')
-    end
+      it 'retorna os feriados nacionais e municipais', vcr: 'feriados/brasil_sao_paulo_2020' do
+        listagem = CalendarioApi.busca_feriados token: token, ano: 2020, cidade: 'SAO_PAULO'
 
-    it 'retorna os feriados nacionais, estaduais e municipais', vcr: 'feriados/brasil_sp_sao_paulo_2020' do
-      listagem = CalendarioApi.busca_feriados token: token, ano: 2020, estado: 'SP', cidade: 'SAO_PAULO'
+        expect(listagem.map(&:tipo).uniq).to include('Feriado Nacional', 'Feriado Municipal')
+        expect(listagem.map(&:tipo).uniq).to_not include('Feriado Estadual')
+      end
 
-      expect(listagem.count).to be > 0
-      expect(listagem.map(&:tipo).uniq).to include('Feriado Nacional', 'Feriado Estadual', 'Feriado Municipal')
+      it 'retorna os feriados nacionais, estaduais e municipais', vcr: 'feriados/brasil_sp_sao_paulo_2020' do
+        listagem = CalendarioApi.busca_feriados token: token, ano: 2020, estado: 'SP', cidade: 'SAO_PAULO'
+
+        expect(listagem.map(&:tipo).uniq).to include('Feriado Nacional', 'Feriado Estadual', 'Feriado Municipal')
+      end
     end
 
     context 'Token Inválido' do
@@ -35,4 +35,13 @@ RSpec.describe CalendarioApi do
           .to raise_error(CalendarioApi::TokenInvalido)
       end
     end
+
+    # context 'Passou do limite de usos', vcr: 'feriados/limite_ultrapassado' do
+    #   it 'lança um erro' do
+    #     expect {
+    #       CalendarioApi::Feriado.busca_feriados(token: token, ano: 2020, cidade: 'RIO_DE_JANEIRO', estado: 'RJ')
+    #     }.to raise_error(CalendarioApi::LimiteUltrapassado)
+    #   end
+    # end
+  end
 end
