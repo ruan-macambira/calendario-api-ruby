@@ -1,4 +1,5 @@
 require 'calendario_api/version'
+require 'calendario_api/cidade_consulta'
 require 'calendario_api/feriado_params'
 require 'calendario_api/feriado_consulta'
 

@@ -1,4 +1,6 @@
-require 'calendario_api/feriado_resposta'
+require 'rest-client'
+require_relative 'feriado_resposta'
+require_relative 'feriado'
 
 module CalendarioApi
   class FeriadoConsulta
