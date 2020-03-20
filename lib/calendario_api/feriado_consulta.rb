@@ -1,3 +1,4 @@
+require 'json'
 require 'rest-client'
 require_relative 'feriado_resposta'
 require_relative 'feriado'

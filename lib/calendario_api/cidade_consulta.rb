@@ -1,3 +1,4 @@
+require 'json'
 require 'rest-client'
 require_relative 'cidade'
 require_relative 'cidade_resposta'
