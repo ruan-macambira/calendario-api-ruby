@@ -14,14 +14,14 @@ module CalendarioApi
 
   # Faz busca na API pelos feriados
   #
-  # @params hash_params[Hash] os parâmetros da busca na API.
+  # @param hash_params[Hash] os parâmetros da busca na API.
   #   token: (Obrigatório) Token de acesso a API de feriados
   #   ano: Ano dos feriados, padrão: ano atual
   #   estado: Estado em que se extrairá os feriados Estaduais
   #   cidade: Cidade em que se extrairá os feriados Municipais
   # @return [FeriadoResposta] uma coleção de Feriados que condizem
   #   com os parâmetros da busca
-  # @raises TokenInvalido caso não envie um token, ou este seja inválido
+  # @raise [TokenInvalido] caso não envie um token, ou este seja inválido
   # @note a busca por cidade e estado é inclusiva, isto é, se estiver
   #   vazia, não virá Feriados Estaduais ou Municipais.
   # @todo Permitir a busca através do código IBGE da cidade

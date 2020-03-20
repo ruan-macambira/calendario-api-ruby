@@ -24,6 +24,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
+    github-markup (3.0.4)
     hashdiff (1.0.1)
     http-accept (1.7.0)
     http-cookie (1.0.3)
@@ -37,6 +38,7 @@ GEM
     netrc (0.11.0)
     public_suffix (4.0.3)
     rake (10.5.0)
+    redcarpet (3.5.0)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -71,6 +73,7 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    yard (0.9.24)
     zeitwerk (2.2.2)
 
 PLATFORMS
@@ -80,11 +83,14 @@ DEPENDENCIES
   bundler (~> 2.0)
   calendario_api!
   factory_bot (~> 5.1)
+  github-markup
   rake (~> 10.0)
+  redcarpet
   rspec (~> 3.0)
   simplecov (~> 0.18)
   vcr (~> 5.1)
   webmock (~> 3.8)
+  yard
 
 BUNDLED WITH
    2.0.2

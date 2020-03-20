@@ -4,7 +4,7 @@ require_relative 'cidade'
 module CalendarioApi
   class CidadeConsulta
     URL_CIDADES = 'http://www.calendario.com.br/api/cities.json'.freeze
-
+    
     def busca
       get = RestClient.get URL_CIDADES
       estados = JSON.parse(get.body)
