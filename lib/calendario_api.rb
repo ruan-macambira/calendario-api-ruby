@@ -30,4 +30,11 @@ module CalendarioApi
       params.ano, params.estado, params.cidade
     )
   end
+
+  # Faz busca na API pelas cidades
+  #
+  # @return [CidadeResposta] uma coleção de cidades do Brasil
+  def self.busca_cidades
+    CidadeConsulta.new.busca
+  end
 end

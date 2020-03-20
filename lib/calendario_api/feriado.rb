@@ -1,6 +1,3 @@
-require 'rest-client'
-require_relative 'feriado_consulta'
-
 module CalendarioApi
   # Objeto que representa um feriado
   class Feriado

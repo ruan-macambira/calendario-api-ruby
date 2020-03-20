@@ -1,3 +1,5 @@
+require 'calendario_api/feriado_resposta'
+
 module CalendarioApi
   class FeriadoConsulta
     URL_FERIADOS = 'https://api.calendario.com.br'.freeze

@@ -1,7 +1,7 @@
 RSpec.describe CalendarioApi do
   let(:token) { ENV['CALENDARIO_API_TOKEN'] }
-  context 'Token Válido' do
-    context '.busca_feriados' do
+  context '.busca_feriados' do
+    context 'Token Válido' do
       it 'retorna feriados nacionais do ano', vcr: 'feriados/brasil_2020' do
         listagem = CalendarioApi.busca_feriados token: token, ano: 2020
 
@@ -43,5 +43,14 @@ RSpec.describe CalendarioApi do
     #     }.to raise_error(CalendarioApi::LimiteUltrapassado)
     #   end
     # end
+  end
+
+  context '.busca_cidades', vcr: 'cidades' do
+    it 'retorna as cidades do Brasil' do
+      listagem = CalendarioApi.busca_cidades
+
+      expect(listagem.count).to(be > 0)
+      expect(listagem.first).to be_a(CalendarioApi::Cidade)
+    end
   end
 end

@@ -3,8 +3,13 @@ require_relative 'cidade_consulta'
 
 module CalendarioApi
   class Cidade
+    # @return [String] Nome da cidade
     attr_reader :nome
+
+    # @return [String] Estado da Cidade
     attr_reader :estado
+
+    # @return [String] Sigla do Estado da Cidade
     attr_reader :sigla_estado
 
     ESTADO_POR_SIGLA = {
@@ -17,14 +22,6 @@ module CalendarioApi
       'RS' => 'Rio Grande do Sul', 'RO' => 'Rondônia', 'SC' => 'Santa Catarina',
       'SP' => 'São Paulo', 'SE' => 'Sergipe', 'TO' => 'Tocantins'
     }.freeze
-
-    def self.listar
-      CidadeConsulta.new.busca_e_filtra(nil)
-    end
-
-    def self.filtrar_estado(*siglas_estados)
-      CidadeConsulta.new.busca_e_filtra(siglas_estados)
-    end
 
     def initialize(nome, sigla_estado)
       @nome = nome
