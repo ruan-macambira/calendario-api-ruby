@@ -1,43 +1,46 @@
 # CalendarioApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/calendario_api`. To experiment with that code, run `bin/console` for an interactive prompt.
+Wrapper da Api de Feriados Brasileiros de http://www.calendario.com.br/
 
-TODO: Delete this and the text above, and describe your gem
+## Instalação
 
-## Installation
-
-Add this line to your application's Gemfile:
+Adicione essa linha na Gemfile da sua aplicação:
 
 ```ruby
 gem 'calendario_api'
 ```
 
-And then execute:
+E então execute:
 
     $ bundle
 
-Or install it yourself as:
+Ou instale você mesmo, conforme abaixo:
 
     $ gem install calendario_api
 
-## Usage
+## Uso
 
-TODO: Write usage instructions here
+Acesse http://www.calendario.com.br/api_feriados_municipais_estaduais_nacionais.php e peça uma chave de API. Sem uma chave, você não poderá utilizar a API de Feriados.
 
-## Development
+```ruby
+require 'calendario_api'
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+# Traz Feriados Nacionais do ano corrente
+CalendarioApi.busca_feriados(token: '<TOKEN_VALIDO>')
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+# Traz Feriados Nacionais de 2020
+CalendarioApi.busca_feriados(token: '<TOKEN_VALIDO>', ano: 2020)
 
-## Contributing
+# Traz Feriados Nacionais e Estaduais de SP em 2020
+CalendarioApi.busca_feriados(token: '<TOKEN_VALIDO>', ano: 2020, estado: 'SP')
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/calendario_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+# Traz Feriados Nacionais, Estaduais de SP, e Municipais de São Paulo em 2020
+CalendarioApi.busca_feriados(token: '<TOKEN_VALIDO>', ano: 2020, estado: 'SP', cidade: 'SAO_PAULO')
+```
 
-## License
+## Contribuindo
+Reporte de Problemas e Pull Requests são bem-vindos no Github em https://github.com/MxBromelia/calendario-api-ruby.
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+## Licença
 
-## Code of Conduct
-
-Everyone interacting in the CalendarioApi project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/calendario_api/blob/master/CODE_OF_CONDUCT.md).
+A Gem é disponível em código-aberto sobre os termos da [LIcença MIT](https://opensource.org/licenses/MIT).
