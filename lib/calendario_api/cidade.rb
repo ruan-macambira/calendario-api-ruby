@@ -2,6 +2,7 @@ require 'rest-client'
 require_relative 'cidade_consulta'
 
 module CalendarioApi
+  # Classe que representa uma cidade
   class Cidade
     # @return [String] Nome da cidade
     attr_reader :nome
@@ -12,6 +13,7 @@ module CalendarioApi
     # @return [String] Sigla do Estado da Cidade
     attr_reader :sigla_estado
 
+    # Mapeamento das siglas dos estados e seus respectivos nomes em extenso
     ESTADO_POR_SIGLA = {
       'AC' => 'Acre', 'AL' => 'Alagoas', 'AP' => 'Amapá', 'AM' => 'Amazonas',
       'BA' => 'Bahia', 'CE' => 'Ceará', 'DF' => 'Distrito Federal',
@@ -23,6 +25,7 @@ module CalendarioApi
       'SP' => 'São Paulo', 'SE' => 'Sergipe', 'TO' => 'Tocantins'
     }.freeze
 
+    # Retorna uma nova instância de Cidade
     def initialize(nome, sigla_estado)
       @nome = nome
       @sigla_estado = sigla_estado
@@ -31,6 +34,14 @@ module CalendarioApi
 
     def to_s
       "#{@nome}-#{@sigla_estado}"
+    end
+
+    # Faz a comparação entre estados primeiro, e cidade depois
+    def <=>(other)
+      compara_estados = estado <=> other.estado
+      return compara_estados unless compara_estados.zero?
+
+      nome <=> other.nome
     end
   end
 end

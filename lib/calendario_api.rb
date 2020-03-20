@@ -3,13 +3,15 @@ require 'calendario_api/cidade_consulta'
 require 'calendario_api/feriado_params'
 require 'calendario_api/feriado_consulta'
 
+# Módulo Único do uso da API de Feriados/Cidades
 module CalendarioApi
+  # Erro genérico das funções
   class Error < StandardError; end
-  # Your code goes here...
 
   # Token de Acesso à API Inválido
   class TokenInvalido < Error; end
 
+  # Limite de usos de cidade ultrapassado
   class LimiteUltrapassado < Error; end
 
   # Faz busca na API pelos feriados

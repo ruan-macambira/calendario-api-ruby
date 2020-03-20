@@ -1,4 +1,5 @@
 module CalendarioApi
+  # Coleção de Respostas da API de Feriados
   class FeriadoResposta
     include Enumerable
 

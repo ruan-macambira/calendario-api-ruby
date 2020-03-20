@@ -3,7 +3,9 @@ require_relative 'feriado_resposta'
 require_relative 'feriado'
 
 module CalendarioApi
+  # Classe que faz a consulta Na API de Feriados
   class FeriadoConsulta
+    # URL Base da API de Feriados
     URL_FERIADOS = 'https://api.calendario.com.br'.freeze
 
     # Inicializa o objeto de consulta

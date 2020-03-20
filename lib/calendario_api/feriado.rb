@@ -19,6 +19,7 @@ module CalendarioApi
     # #return [String] Descrição breve do Feriado
     attr_reader :descricao
 
+    # retorna uma nova instânica de Feriado
     def initialize(params = {})
       @nome = params['name']
       @tipo = params['type']
@@ -28,6 +29,7 @@ module CalendarioApi
       @descricao = params['description']
     end
 
+    # Faz a comparação entre as datas
     def <=>(other)
       date <=> other.date
     end

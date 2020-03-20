@@ -1,4 +1,5 @@
 module CalendarioApi
+  # Coleção da Resposta da Api de cidades
   class CidadeResposta
     include Enumerable
 
