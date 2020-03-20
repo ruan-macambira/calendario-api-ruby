@@ -37,7 +37,7 @@ GEM
     minitest (5.14.0)
     netrc (0.11.0)
     public_suffix (4.0.3)
-    rake (10.5.0)
+    rake (13.0.1)
     redcarpet (3.5.0)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
@@ -84,7 +84,7 @@ DEPENDENCIES
   calendario_api!
   factory_bot (~> 5.1)
   github-markup
-  rake (~> 10.0)
+  rake (~> 13.0)
   redcarpet
   rspec (~> 3.0)
   simplecov (~> 0.18)
