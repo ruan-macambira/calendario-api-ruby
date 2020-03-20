@@ -27,6 +27,8 @@ module CalendarioApi
   # @note a busca por cidade e estado é inclusiva, isto é, se estiver
   #   vazia, não virá Feriados Estaduais ou Municipais.
   # @todo Permitir a busca através do código IBGE da cidade
+  # @todo Acionar a exceção correta quando o limite de cidades foi ultrapassado
+  # @todo Aplicar Validação dos parâmetros antes de fazer a requisição
   def self.busca_feriados(hash_params = {})
     params = FeriadoParams.new hash_params
     FeriadoConsulta.new(params.token).busca_por_parametros(

@@ -15,6 +15,7 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -31,11 +32,15 @@ GEM
       domain_name (~> 0.5)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    method_source (0.9.2)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
     minitest (5.14.0)
     netrc (0.11.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (4.0.3)
     rake (13.0.1)
     redcarpet (3.5.0)
@@ -84,6 +89,7 @@ DEPENDENCIES
   calendario_api!
   factory_bot (~> 5.1)
   github-markup
+  pry
   rake (~> 13.0)
   redcarpet
   rspec (~> 3.0)
