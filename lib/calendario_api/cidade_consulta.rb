@@ -1,19 +1,22 @@
 require 'rest-client'
 require_relative 'cidade'
+require_relative 'cidade_resposta'
 
 module CalendarioApi
   class CidadeConsulta
     URL_CIDADES = 'http://www.calendario.com.br/api/cities.json'.freeze
-    
+
     def busca
       get = RestClient.get URL_CIDADES
       estados = JSON.parse(get.body)
 
-      estados.map do |sigla_estado, cidades|
-        cidades.map do |cidade|
-          Cidade.new cidade, sigla_estado
-        end
-      end.flatten
+      CidadeResposta.new(
+        estados.map do |sigla_estado, cidades|
+          cidades.map do |cidade|
+            Cidade.new cidade, sigla_estado
+          end
+        end.flatten
+      )
     end
 
     private
