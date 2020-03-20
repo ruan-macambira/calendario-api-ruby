@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    calendario_api (0.1.0)
+    calendario_api (0.1.0b)
       rest-client
 
 GEM
